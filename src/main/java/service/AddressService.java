@@ -42,7 +42,7 @@ public class AddressService extends Util implements AddressDAO{
 
         String sql = "SELECT ID, COUNTRY, CITY, STREET, POST_CODE FROM ADDRESS";
 
-        try (Statement statement = connection.prepareStatement(sql)) {
+        try (Statement statement = connection.createStatement()) {
 
             ResultSet resultSet = statement.executeQuery(sql);
 
@@ -60,11 +60,11 @@ public class AddressService extends Util implements AddressDAO{
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
+        } /*finally {
             if (connection != null) {
                 connection.close();
             }
-        }
+        }*/
         return addresses;
     }
 
